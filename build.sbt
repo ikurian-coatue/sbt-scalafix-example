@@ -4,5 +4,6 @@ lazy val myproject = project.settings(
   scalacOptions ++= List(
     "-Yrangepos",
     "-Ywarn-unused-import"
-  )
+  ),
+  Compile / compile := (Compile / compile).dependsOn((Compile / scalafix).toTask(" RemoveUnused")).value
 )
